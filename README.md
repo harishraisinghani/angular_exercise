@@ -24,11 +24,15 @@ Angular Exercise from Code School - http://campus.codeschool.com/courses/shaping
 * Directive: is a marker on a HTML tag that tells Angular to run/reference some JS code
 * Example:
     
-    (in your `index.html` file):
-    `<body ng-controller="StoreController">`
+    * `ng-app` (in your `index.html` file):
+        `<html ng-app="gemStore">` This attaches the Application Module to the entire HTML
+    
+    * `ng-controller` (in your `index.html` file):
+        `<body ng-controller="StoreController">` This attaches a Controller function to the body
 
-    (in your `javascript` file):
-    `function StoreController() { alert.... }`
+    * (in your `javascript` file):
+        `function StoreController() { alert.... }`
+        
 
 * Some useful built in Directives:
     
@@ -39,12 +43,22 @@ Angular Exercise from Code School - http://campus.codeschool.com/courses/shaping
 
     * `ng-hide = "some expression"` //Opposite of `ng-show`
     * `ng-repeat = "item in app.items"` // Here, you can list each item that are in the _app.items_ array, for example:
-    
-            <div ng-repeat="product in store.products"> // Will execute following code for each product in the store.product array
             
-    * 
-     
-
+            <div ng-repeat="product in store.products"> // Will execute following code for each product in the store.product array         
+   
+    * `ng-src = {{image file }} ` // We need to use this directive to load images because trying to use `<img src = "{{ image file }}` causes an error as the browser tries to load the image _before_ the Expression evaluates
+    
+    * `ng-click = "some expression" ` // Use this to define the behaviour when the HTML element that has `ng-click` attributed to it, such as changing the value of the expression. This representes **2-way Data Binding**, which is when _Expressions are re-evaluated when a property changes._
+    
+    * `ng-init = "some value"` // This evaluates an express in the current scope as a default
+    
+    * `ng-class = "something"` // This allows us to do stuff with classes, such as appending a class if an expression is true
+    
+            <li ng-class="{ active:tab === 1 }" > // This appends a class='active' to the <li> when some tab === 1 is true
+    *
+    
+    
+            
 #### Modules
 * Pieces of angular code - hence what you typical write when coding in Angular are **modules**
 * Define dependencies
@@ -103,6 +117,29 @@ Angular Exercise from Code School - http://campus.codeschool.com/courses/shaping
 
 * where `ng-controller` is the **directive**, `StoreController` is the **Controller name** and `store` is the **Alias** used  inside of expressions. Note how the product name, price and description are accessed in the expressions.
 * Also note that we only have access to the Controller's data inside the div.
+
+
+#### Filters
+* Filters to help transform data
+* list of filters: https://docs.angularjs.org/api/ng/filter
+* Filters are added to expressions by using the `|` pipe character to take the output from an expression and input it into a filter
+
+        {{ data | filter:options }}
+
+* For example:
+
+        {{ product.price | currency }} // Takes the price expression and puts it through the currency filter which helps format pricing nicely
+        
+        {{ '1388123412323' | data: 'MM/dd/yyyy @ h:mma' }} -> 12/26/2013 @ 12:50AM // We use a specific data format option
+
+* It's useful to use options to limit the number of objects displayed from an array
+
+        <li ng-repeat='product in store.products | limitTo:3'>
+
+#### Adding Tabs
+
+
+
 
 
 
