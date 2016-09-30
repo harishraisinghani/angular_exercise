@@ -1,4 +1,4 @@
-# angular_exercise
+# AngularJS Exercise
 Angular Exercise from Code School - http://campus.codeschool.com/courses/shaping-up-with-angular-js/level/1/
 
 #### What is Angular
@@ -12,6 +12,13 @@ Angular Exercise from Code School - http://campus.codeschool.com/courses/shaping
 * Organizes your JS
 * Helps to create really responsive sites (fast) because it only makes requests to update the existing page
 
+#### Key components of Angular
+1. **Directives** - HTML annotations that trigger JS behaviours (eg. show, hide, repeat). Live in HTML file.
+2. **Modules** - Where the application components live (eg. store, house, some noun...). Defined and live in app.js file
+3. **Controllers** - Where we add application behaviour. Created in app.js file, used in HTML file
+4. **Expressions** - How values get displayed in HTML pages. Used in HTML file. 
+
+
 #### Directives 
 * In Angular, you add behaviour to HTML through 'Directives'
 * Directive: is a marker on a HTML tag that tells Angular to run/reference some JS code
@@ -22,6 +29,21 @@ Angular Exercise from Code School - http://campus.codeschool.com/courses/shaping
 
     (in your `javascript` file):
     `function StoreController() { alert.... }`
+
+* Some useful built in Directives:
+    
+    * `ng-show = "some expression"` // This allows you to show HTML elements only when a certain expression is true. For example, the following button will only show if `store.product.canPurchase` is **true**:
+    
+            <button ng-show = "store.product.canPurchase"> Add to Cart </button>
+            
+
+    * `ng-hide = "some expression"` //Opposite of `ng-show`
+    * `ng-repeat = "item in app.items"` // Here, you can list each item that are in the _app.items_ array, for example:
+    
+            <div ng-repeat="product in store.products"> // Will execute following code for each product in the store.product array
+            
+    * 
+     
 
 #### Modules
 * Pieces of angular code - hence what you typical write when coding in Angular are **modules**
@@ -77,8 +99,15 @@ Angular Exercise from Code School - http://campus.codeschool.com/courses/shaping
             <h2>${{store.product.price}}</h2>
             <p>{{store.product.description}}</p>
           </div>
+          {{store.product.name}} // Note this would never work because don't have access to controller outside of the <div>
 
-* where `ng-controller` is the **directive**, `StoreController` is the **Controller name** and `store` is the **Alias** used  inside of expressions. Note how the product name, price and description are accessed in the expressions
+* where `ng-controller` is the **directive**, `StoreController` is the **Controller name** and `store` is the **Alias** used  inside of expressions. Note how the product name, price and description are accessed in the expressions.
+* Also note that we only have access to the Controller's data inside the div.
+
+
+
+
+
 
         
     
