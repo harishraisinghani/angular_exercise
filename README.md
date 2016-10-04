@@ -55,7 +55,6 @@ Angular Exercise from Code School - http://campus.codeschool.com/courses/shaping
     * `ng-class = "something"` // This allows us to do stuff with classes, such as appending a class if an expression is true
     
             <li ng-class="{ active:tab === 1 }" > // This appends a class='active' to the <li> when some tab === 1 is true
-    *
     
     
             
@@ -136,8 +135,31 @@ Angular Exercise from Code School - http://campus.codeschool.com/courses/shaping
 
         <li ng-repeat='product in store.products | limitTo:3'>
 
-#### Adding Tabs
+#### Forms
 
+* Example of a form:
+
+        <form name="reviewForm">
+          <blockquote>
+            <b>Stars: {{review.stars}}</b>
+            {{review.body}}
+            <cite>by: {{review.author}}</cite>
+          </blockquote>
+          <select>
+            <option value="1">1 star</option>
+            <option value="2">2 stars</option>
+            <option value="3">3 stars</option>
+            <textarea></textarea>
+            <label>by:</label>
+            <input type="email">
+            <input type="submit" value="Submit">
+          </select>
+        </form>
+
+* We need a way to 'bind' the form element value to the property of the review object. This is done using the `ng-model` directive.
+
+            <select ng-model="review.stars">
+            
 
 
 
